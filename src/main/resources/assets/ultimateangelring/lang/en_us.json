@@ -1,0 +1,10 @@
+{
+  "itemGroup.ultimateangelring": "Ultimate Angel Ring",
+
+  "item.ultimateangelring.angel_ring": "Angel Ring",
+  "item.ultimateangelring.angel_ring.tooltip": "Grants creative flight when in inventory",
+  "item.ultimateangelring.angel_ring.tooltip2": "Fly like an angel!",
+
+  "effect.ultimateangelring.flying": "Flying"
+  
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "b": {
+      "item": "minecraft:shulker_box"
+    },
+    "c": {
+      "item": "minecraft:nether_star"
+    },
+    "d": {
+      "item": "minecraft:emerald_block"
+    }
+  },
+  "pattern": [
+    "ada",
+    "bcb",
+    "ada"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ultimateangelring:angel_ring"
+  }
+}
