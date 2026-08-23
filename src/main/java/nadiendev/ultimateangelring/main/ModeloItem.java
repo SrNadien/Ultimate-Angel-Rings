@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.Block;
 import java.util.stream.Stream;
 
 /**
- * 26.1.2: net.neoforged.neoforge.client.model.generators.ItemModelProvider ya no existe.
+ * 26.2: net.neoforged.neoforge.client.model.generators.ItemModelProvider ya no existe.
  * Los modelos de item se generan con ModelProvider + ItemModelGenerators, y cada item
  * ademas recibe su client item definition en assets/<ns>/items/.
  */
