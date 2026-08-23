@@ -1,4 +1,8 @@
 {
-  "order": 100,
+  "add_cosmetic": true,
+  "drop_rule": "default",
+  "icon": "ultimateangelring:slot/angel_ring",
+  "order": 10,
+  "render_toggle": true,
   "size": 1
 }
