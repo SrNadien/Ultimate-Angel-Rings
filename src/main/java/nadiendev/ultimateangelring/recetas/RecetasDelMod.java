@@ -34,7 +34,7 @@ public class RecetasDelMod extends RecipeProvider {
     }
 
     /**
-     * 26.2: RecipeProvider ya no implementa DataProvider. Lo que se registra en el
+     * 26.1.2: RecipeProvider ya no implementa DataProvider. Lo que se registra en el
      * DataGenerator es este Runner.
      */
     public static final class Runner extends RecipeProvider.Runner {

@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
  * - data/ultimateangelring/curios/entities/player_rings.json
  * - data/curios/tags/item/ring.json
  *
- * 26.2 / Curios 16: el constructor ya no recibe ExistingFileHelper, generate() toma solo
+ * 26.1.2 / Curios 15: el constructor ya no recibe ExistingFileHelper, generate() toma solo
  * el HolderLookup.Provider, y el propio provider expone tag(...), asi que CuriosTags.java
  * (el ItemTagsProvider aparte que habia en 1.21.1) desaparece.
  */
@@ -56,10 +56,8 @@ public class ModCuriosProvider extends CuriosDataProvider {
         // ============================================
         // TAG curios:ring -> Angel Ring
         // ============================================
-        // 26.2: TagAppender<Item> acepta ResourceKey<Item>.
-        // (En 26.1.2 era TagAppender<Item, Item> y aceptaba el Item directo.)
         this.tag(ItemTags.create(Identifier.fromNamespaceAndPath("curios", "ring")))
-                .add(ItemsDelMod.ANGEL_RING.getKey());
+                .add(ItemsDelMod.ANGEL_RING.get());
 
         UltimateAngelRings.LOGGER.info("Curios data generation completed: slot 'ring' creado y asignado a jugadores");
     }

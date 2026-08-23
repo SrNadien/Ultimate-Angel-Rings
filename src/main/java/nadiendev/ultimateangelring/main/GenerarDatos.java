@@ -8,7 +8,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 /**
- * 26.2: GatherDataEvent es abstracto y se parte en .Client / .Server.
+ * 26.1.2: GatherDataEvent es abstracto y se parte en .Client / .Server.
  * NeoForge registra todo (datos de cliente Y de servidor) desde el evento .Client en
  * una unica run "clientData".
  *

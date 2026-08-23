@@ -26,9 +26,6 @@ import java.util.function.Consumer;
  *
  * El vuelo se otorga con el atributo neoforge:creative_flight
  * ({@link NeoForgeMod#CREATIVE_FLIGHT}), no con un MobEffect propio.
- *
- * 26.2 tambien expone NeoForgeMod.GLIDING_FLIGHT, que aqui NO se usa a proposito:
- * el anillo da vuelo creativo completo, no planeo tipo elytra.
  */
 public class AngelRingItem extends Item implements ICurioItem {
 
@@ -36,7 +33,7 @@ public class AngelRingItem extends Item implements ICurioItem {
         super(properties);
     }
 
-    // 26.2: appendHoverText recibe TooltipDisplay y un Consumer, ya no una List<Component>
+    // 26.1.2: appendHoverText recibe TooltipDisplay y un Consumer, ya no una List<Component>
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay display,
                                 Consumer<Component> tooltipAdder, TooltipFlag tooltipFlag) {
@@ -52,7 +49,7 @@ public class AngelRingItem extends Item implements ICurioItem {
      * y operacion ADD_VALUE. Curios agrega y quita el modificador al equipar y
      * desequipar, asi que no hace falta ningun tick.
      *
-     * 26.2: el segundo parametro es Identifier, no ResourceLocation.
+     * 26.1.2: el segundo parametro es Identifier, no ResourceLocation.
      */
     @Override
     public Multimap<Holder<Attribute>, AttributeModifier> getAttributeModifiers(SlotContext slotContext,

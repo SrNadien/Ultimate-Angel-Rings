@@ -35,7 +35,7 @@ neoForge {
         }
 
         data {
-            // 26.2: NeoForge genera datos de cliente Y de servidor desde GatherDataEvent.Client,
+            // 26.1.2: NeoForge genera datos de cliente Y de servidor desde GatherDataEvent.Client,
             // en una unica run clientData.
             clientData()
             gameDirectory = project.file('run-data')

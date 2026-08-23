@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ItemsDelMod {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(UltimateAngelRings.MOD_ID);
 
-    // 26.2: Item.Properties tiene que llevar su id de registro (setId), asi que hay que pasar
+    // 26.1.2: Item.Properties tiene que llevar su id de registro (setId), asi que hay que pasar
     // por registerItem(...). Con register(Supplier) el item revienta con NPE al construirse.
     // DataComponents.UNBREAKABLE ahora es DataComponentType<Unit>, no <Unbreakable>.
     public static final DeferredItem<Item> ANGEL_RING = ITEMS.<Item>registerItem("angel_ring",
