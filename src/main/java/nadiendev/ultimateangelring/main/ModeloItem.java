@@ -2,53 +2,50 @@ package nadiendev.ultimateangelring.main;
 
 import nadiendev.ultimateangelring.UltimateAngelRings;
 import nadiendev.ultimateangelring.items.ItemsDelMod;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredItem;
+import net.minecraft.world.level.block.Block;
 
-@SuppressWarnings({"removal", "deprecation"})
-public class ModeloItem extends ItemModelProvider {
+import java.util.stream.Stream;
 
-    public ModeloItem(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, UltimateAngelRings.MOD_ID, existingFileHelper);
+/**
+ * 26.2: net.neoforged.neoforge.client.model.generators.ItemModelProvider ya no existe.
+ * Los modelos de item se generan con ModelProvider + ItemModelGenerators, y cada item
+ * ademas recibe su client item definition en assets/<ns>/items/.
+ */
+public class ModeloItem extends ModelProvider {
+
+    public ModeloItem(PackOutput output) {
+        super(output, UltimateAngelRings.MOD_ID);
     }
 
     @Override
-    protected void registerModels() {
-        // Registrar modelos de los Angel Rings
-        simpleItem(ItemsDelMod.ANGEL_RING);
-        // simpleItem(ItemsDelMod.ANGEL_RING_RED);
-        // simpleItem(ItemsDelMod.ANGEL_RING_BLUE);
-        // simpleItem(ItemsDelMod.ANGEL_RING_GREEN);
-        // simpleItem(ItemsDelMod.ANGEL_RING_GOLD);
-        // simpleItem(ItemsDelMod.ANGEL_RING_DIAMOND);
-        // simpleItem(ItemsDelMod.ANGEL_RING_NETHERITE);
-        
-        // Registrar modelos de componentes
-        // simpleItem(ItemsDelMod.ANGEL_FEATHER);
-        // simpleItem(ItemsDelMod.HEAVENLY_ESSENCE);
-        // simpleItem(ItemsDelMod.CELESTIAL_CRYSTAL);
+    public String getName() {
+        return "Item Model Definitions - " + this.modId;
     }
 
-    /**
-     * Crea un modelo simple de item
-     */
-    private ItemModelBuilder simpleItem(DeferredItem<Item> item) {
-        return withExistingParent(item.getId().getPath(),
-                ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(UltimateAngelRings.MOD_ID, "item/" + item.getId().getPath()));
+    @Override
+    protected Stream<? extends Holder<Block>> getKnownBlocks() {
+        return Stream.empty();   // el mod no tiene bloques
     }
 
-    /**
-     * Crea un modelo de item con textura personalizada
-     */
-    private ItemModelBuilder handheldItem(DeferredItem<Item> item) {
-        return withExistingParent(item.getId().getPath(),
-                ResourceLocation.withDefaultNamespace("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(UltimateAngelRings.MOD_ID, "item/" + item.getId().getPath()));
+    @Override
+    protected Stream<? extends Holder<Item>> getKnownItems() {
+        return BuiltInRegistries.ITEM.listElements()
+                .filter(holder -> holder.getKey().identifier().getNamespace().equals(this.modId))
+                .filter(holder -> !(holder.value() instanceof BlockItem));
+    }
+
+    @Override
+    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        // Equivalente al viejo withExistingParent(name, "item/generated").texture("layer0", ...)
+        itemModels.generateFlatItem(ItemsDelMod.ANGEL_RING.get(), ModelTemplates.FLAT_ITEM);
     }
 }

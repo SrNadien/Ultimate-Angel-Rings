@@ -1,11 +1,11 @@
 {
   "itemGroup.ultimateangelring": "Anillo de Ángel Definitivo",
-  
+
   "item.ultimateangelring.angel_ring": "Anillo de Ángel",
 
-  "tooltip.ultimateangelring.angel_ring.line1": "Otorga vuelo creativo cuando está en el inventario",
-  "tooltip.ultimateangelring.angel_ring.line2": "¡Vuela como un ángel!",
+  "tooltip.ultimateangelring.angel_ring.line1": "Otorga Vuelo Creativo Cuando Está En El Inventario O En El Inventario Curios",
+  "tooltip.ultimateangelring.angel_ring.line2": "¡Vuela Como Un Ángel!",
 
-  "effect.ultimateangelring.flying": "Vuelo"
-  
+  "curios.identifier.ring": "Anillo De Ángel",
+  "curios.modifiers.ring": "Anillo De Ángel"
 }

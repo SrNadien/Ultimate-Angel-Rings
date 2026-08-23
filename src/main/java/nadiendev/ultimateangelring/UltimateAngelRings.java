@@ -1,10 +1,9 @@
 package nadiendev.ultimateangelring;
 
-import nadiendev.ultimateangelring.items.ItemsDelMod;
-import nadiendev.ultimateangelring.main.EventosMod;
-import nadiendev.ultimateangelring.main.TabCreativa;
-import nadiendev.ultimateangelring.recetas.RecetasDelMod;
 import nadiendev.ultimateangelring.compatibilidad.curios.CuriosCompat;
+import nadiendev.ultimateangelring.items.ItemsDelMod;
+import nadiendev.ultimateangelring.main.TabCreativa;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -26,20 +25,20 @@ public class UltimateAngelRings {
         // Registrar tab creativa
         TabCreativa.register(modEventBus);
 
-        // Integración con Curios 
+        // Integracion con Curios
         CuriosCompat.register(modEventBus);
         LOGGER.info("Compatibilidad con Curios registrada");
 
-        // Registrar eventos
+        // El vuelo lo maneja EventosMod, que es @EventBusSubscriber del game bus:
+        // ya no hay MobEffect que registrar en el mod bus.
         modEventBus.addListener(this::commonSetup);
-        EventosMod.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Configuración común de Ultimate Angel Ring completada");
+        LOGGER.info("Configuracion comun de Ultimate Angel Ring completada");
     }
 
-    public static net.minecraft.resources.ResourceLocation loc(String path) {
-        return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier loc(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

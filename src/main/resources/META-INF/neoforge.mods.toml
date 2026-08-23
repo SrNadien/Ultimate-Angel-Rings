@@ -1,19 +1,20 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
-issueTrackerURL="https://github.com/yourname/${mod_id}/issues"
+issueTrackerURL="https://github.com/SrNadien/UltimateAngelRing/issues"
 
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
-displayName="${mod_name}"
-description='''${mod_description}'''
+displayName="${mod_named}"
+logoFile="logo.png"
 authors="${mod_authors}"
+description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"
-    versionRange="${neo_version}"
+    versionRange="${neo_version_range}"
     ordering="NONE"
     side="BOTH"
 
@@ -27,14 +28,6 @@ authors="${mod_authors}"
 [[dependencies.${mod_id}]]
     modId="curios"
     type="required"
-    versionRange="${curios_version}"
+    versionRange="[16.0.0,17)"
     ordering="AFTER"
     side="BOTH"
-
-[[dependencies.${mod_id}]]
-modId = "jei"
-type = "optional"
-versionRange = "${jei_version}"
-ordering = "NONE"
-side = "BOTH"
-
