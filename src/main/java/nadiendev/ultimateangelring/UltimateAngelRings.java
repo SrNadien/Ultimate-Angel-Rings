@@ -6,7 +6,9 @@ import nadiendev.ultimateangelring.main.TabCreativa;
 import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import nadiendev.ultimateangelring.config.ModConfig;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig.Type;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,9 @@ public class UltimateAngelRings {
         // Integracion con Curios
         CuriosCompat.register(modEventBus);
         LOGGER.info("Compatibilidad con Curios registrada");
+
+        // Configuracion (SERVER: la controla el servidor y se sincroniza a los clientes)
+        modContainer.registerConfig(Type.SERVER, ModConfig.SPEC);
 
         // El vuelo lo maneja EventosMod, que es @EventBusSubscriber del game bus:
         // ya no hay MobEffect que registrar en el mod bus.
