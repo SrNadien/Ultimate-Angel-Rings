@@ -7,5 +7,7 @@
   "tooltip.ultimateangelring.angel_ring.line2": "¡Vuela Como Un Ángel!",
 
   "curios.identifier.ring": "Anillo De Ángel",
-  "curios.modifiers.ring": "Anillo De Ángel"
+  "curios.modifiers.ring": "Anillo De Ángel",
+
+  "config.ultimateangelring.max_horizontal_speed": "Velocidad horizontal máxima del Angel Ring (bloques/segundo, 0 = sin límite)"
 }

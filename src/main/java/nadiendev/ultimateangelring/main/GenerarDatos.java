@@ -3,6 +3,7 @@ package nadiendev.ultimateangelring.main;
 import nadiendev.ultimateangelring.UltimateAngelRings;
 import nadiendev.ultimateangelring.datagen.ModCuriosProvider;
 import nadiendev.ultimateangelring.recetas.RecetasDelMod;
+import net.minecraft.core.RegistrySetBuilder;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -20,7 +21,7 @@ public class GenerarDatos {
 
     @SubscribeEvent
     public static void gatherData(GatherDataEvent.Client event) {
-        event.createProvider(RecetasDelMod.Runner::new);
+        event.createReloadableRegistryObjects(new RegistrySetBuilder().add(RecetasDelMod.create()));
         event.createProvider(ModCuriosProvider::new);
         event.createProvider(ModeloItem::new);
 

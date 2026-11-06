@@ -1,19 +1,35 @@
 package nadiendev.ultimateangelring.recetas;
 
+import nadiendev.ultimateangelring.UltimateAngelRings;
 import nadiendev.ultimateangelring.items.ItemsDelMod;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.MultiRegistryBootstrap;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Recipe;
 
-import java.util.concurrent.CompletableFuture;
-
+/**
+ * 26.3: las recetas ya no son un DataProvider. Se generan como entradas de un
+ * RegistrySetBuilder (ver {@code GenerarDatos}) mediante {@link #create()}.
+ */
 public class RecetasDelMod extends RecipeProvider {
 
-    protected RecetasDelMod(HolderLookup.Provider registries, RecipeOutput output) {
-        super(registries, output);
+    private final HolderGetter<Item> items;
+
+    protected RecetasDelMod(BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+        super(recipeOutput, advancementOutput);
+        this.items = recipeOutput.lookup(Registries.ITEM);
+    }
+
+    public static MultiRegistryBootstrap create() {
+        return RecipeProvider.asBootstrap(RecetasDelMod::new);
     }
 
     @Override
@@ -21,7 +37,7 @@ public class RecetasDelMod extends RecipeProvider {
         // ==========================================
         // RECETA ANGEL RING
         // ==========================================
-        this.shaped(RecipeCategory.TOOLS, ItemsDelMod.ANGEL_RING.get(), 1)
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.TOOLS, ItemsDelMod.ANGEL_RING.get(), 1)
                 .pattern("ada")
                 .pattern("bcb")
                 .pattern("ada")
@@ -30,26 +46,6 @@ public class RecetasDelMod extends RecipeProvider {
                 .define('c', Items.NETHER_STAR)
                 .define('d', Items.EMERALD_BLOCK)
                 .unlockedBy("has_nether_star", this.has(Items.NETHER_STAR))
-                .save(this.output);
-    }
-
-    /**
-     * 26.2: RecipeProvider ya no implementa DataProvider. Lo que se registra en el
-     * DataGenerator es este Runner.
-     */
-    public static final class Runner extends RecipeProvider.Runner {
-        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> registries) {
-            super(packOutput, registries);
-        }
-
-        @Override
-        protected RecipeProvider createRecipeProvider(HolderLookup.Provider registries, RecipeOutput output) {
-            return new RecetasDelMod(registries, output);
-        }
-
-        @Override
-        public String getName() {
-            return "Ultimate Angel Ring Recipes";
-        }
+                .save(this.output, ResourceKey.create(Registries.RECIPE, UltimateAngelRings.loc("angel_ring")));
     }
 }
