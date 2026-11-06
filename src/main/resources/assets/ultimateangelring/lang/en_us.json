@@ -7,5 +7,7 @@
   "tooltip.ultimateangelring.angel_ring.line2": "Fly like an angel!",
 
   "curios.identifier.ring": "Angel Ring",
-  "curios.modifiers.ring": "Angel Ring"
+  "curios.modifiers.ring": "Angel Ring",
+
+  "config.ultimateangelring.max_horizontal_speed": "Angel Ring max horizontal speed (blocks/second, 0 = unlimited)"
 }
