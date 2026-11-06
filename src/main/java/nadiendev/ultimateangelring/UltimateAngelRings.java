@@ -1,13 +1,14 @@
 package nadiendev.ultimateangelring;
 
 import nadiendev.ultimateangelring.items.ItemsDelMod;
-import nadiendev.ultimateangelring.main.EventosMod;
 import nadiendev.ultimateangelring.main.TabCreativa;
 import nadiendev.ultimateangelring.recetas.RecetasDelMod;
 import nadiendev.ultimateangelring.compatibilidad.curios.CuriosCompat;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import nadiendev.ultimateangelring.config.ModConfig;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig.Type;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +31,11 @@ public class UltimateAngelRings {
         CuriosCompat.register(modEventBus);
         LOGGER.info("Compatibilidad con Curios registrada");
 
+        // Configuracion
+        modContainer.registerConfig(Type.SERVER, ModConfig.SPEC);
+
         // Registrar eventos
         modEventBus.addListener(this::commonSetup);
-        EventosMod.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

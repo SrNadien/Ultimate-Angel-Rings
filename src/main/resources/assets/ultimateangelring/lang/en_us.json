@@ -2,9 +2,12 @@
   "itemGroup.ultimateangelring": "Ultimate Angel Ring",
 
   "item.ultimateangelring.angel_ring": "Angel Ring",
-  "item.ultimateangelring.angel_ring.tooltip": "Grants creative flight when in inventory",
-  "item.ultimateangelring.angel_ring.tooltip2": "Fly like an angel!",
 
-  "effect.ultimateangelring.flying": "Flying"
-  
+  "tooltip.ultimateangelring.angel_ring.line1": "Grants creative flight when in inventory or curios inventory",
+  "tooltip.ultimateangelring.angel_ring.line2": "Fly like an angel!",
+
+  "curios.identifier.ring": "Angel Ring",
+  "curios.modifiers.ring": "Angel Ring",
+
+  "config.ultimateangelring.max_horizontal_speed": "Angel Ring max horizontal speed (blocks/second, 0 = unlimited)"
 }
